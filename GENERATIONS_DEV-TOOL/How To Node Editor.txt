@@ -1,0 +1,89 @@
+**GENERATIONS – How To: Node Editor**
+
+Dieses Dokument erklärt, wie du den Node Editor für das Spiel GENERATIONS effektiv nutzt, um Lebenspfade mit Entscheidungen, Zufallsevents, Flags und Bedingungen zu erstellen.
+
+---
+
+### 1. Übersicht
+
+Der Node Editor ist ein grafisches Werkzeug zur Erstellung und Verknüpfung von Lebensereignissen. Jeder Node steht für ein Ereignis im Spiel (z. B. "Du gehst zur Schule" oder "Du entscheidest dich für eine Lehre").
+
+Es gibt zwei Typen von Nodes:
+
+* **entscheidung**: vom Spieler auswählbare Optionen
+* **zufall**: automatisch ausgelöste Ereignisse
+
+---
+
+### 2. Node erstellen
+
+1. Klicke auf **"+ Node hinzufügen"**.
+2. Doppelklicke auf den neuen Node, um seine Eigenschaften zu bearbeiten:
+
+* **ID**: eindeutiger Name (z. B. `Start_Lehre`)
+* **Typ**: `entscheidung` oder `zufall`
+* **Beschreibung**: Text, der im Spiel angezeigt wird
+* **Bedingung**: Ausdruck, der entscheidet, ob das Event ausgelöst wird
+* **Mehrfach auswählbar**: `true` oder `false`
+* **Effekte (JSON)**: Veränderungen an Stats (z. B. `{ "intelligenz": 1 }`)
+* **SetFlags (JSON)**: Flags, die gesetzt werden (z. B. `{ "Lehre": true }`)
+
+---
+
+### 3. Bedingungssyntax
+
+Das Feld **"Bedingung"** akzeptiert Ausdrücke mit Flags und Alter:
+
+#### Beispiele:
+
+* `Flags['Gymnasium'] && Alter >= 18`  ➔ UND-Verknüpfung
+* `Flags['Lehre'] || Flags['Gymnasium']` ➔ ODER-Verknüpfung
+* `(Flags['Lehre'] || Flags['Gymnasium']) && Alter >= 18`
+
+**Hinweis:**
+
+* `Alter` wird in Jahren berechnet (aus `ageInMonths`)
+* `Flags['XYZ']` greift auf gesetzte Flags zu
+
+---
+
+### 4. Verbindungen erstellen
+
+1. Ziehe mit der Maus vom **grünen Punkt** (Ausgang) eines Nodes zum **blauen Punkt** (Eingang) eines anderen.
+2. Diese Verbindung wird beim Export als **`verknuepfungen`** gespeichert und definiert Entscheidungs- oder Folgepfade.
+
+---
+
+### 5. Import/Export
+
+* **Exportieren**: Speichere dein Projekt als `nodes.json` über den Button "📤 JSON exportieren".
+* **Importieren**: Lade eine bestehende Datei über "📥 JSON importieren".
+
+Die zuletzt verwendeten Ordner werden gemerkt.
+
+---
+
+### 6. Automatisches Flagging
+
+Wenn du einen Entscheidungsknoten erstellst, wird automatisch eine Flag mit dem Namen der Node-ID gesetzt:
+Beispiel: `entscheidung` mit ID `Gymnasium` setzt automatisch `Flags['Gymnasium'] = true`
+
+---
+
+### 7. Fehlerbehandlung
+
+* Bei Bedingungsfehlern (z. B. falsche Syntax) erscheint eine Warnung in der Konsole.
+* Typische Fehler: fehlende Klammern, falsche JSON-Syntax, unbekannte Variablen.
+
+---
+
+### 8. Tipps
+
+* Halte Node-IDs eindeutig.
+* Nutze Flags konsequent zur Steuerung von Entscheidungen.
+* Benenne Flags sprechend (z. B. `Berufslehre`, `Matura`, `StudiumBegonnen`).
+* Führe Entscheidungsbäume logisch weiter – wer "Gymnasium" wählt, sollte nicht mehr "Lehre" absolvieren können.
+
+---
+
+Bei Fragen oder Erweiterungswünschen kann der Node Editor modular angepasst werden (z. B. für visuelle Bedingungen, Validierung oder Statistikanzeige).

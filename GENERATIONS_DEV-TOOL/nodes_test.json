@@ -1,0 +1,54 @@
+[
+  {
+    "id": "test_start",
+    "typ": "zufall",
+    "beschreibung": "Dein Leben beginnt.",
+    "bedingung": "Alter >= 0",
+    "mehrfach": false,
+    "effekte": {
+      "leben": 1
+    },
+    "setFlags": {
+      "geboren": true
+    },
+    "requireFlags": {},
+    "pos": [100, 100],
+    "verknuepfungen": ["kindergarten"]
+  },
+  {
+    "id": "kindergarten",
+    "typ": "entscheidung",
+    "beschreibung": "Du gehst in den Kindergarten.",
+    "bedingung": "Alter >= 4",
+    "mehrfach": false,
+    "effekte": {
+      "intelligenz": 1
+    },
+    "setFlags": {
+      "kindergarten": true
+    },
+    "requireFlags": {
+      "geboren": true
+    },
+    "pos": [300, 200],
+    "verknuepfungen": ["primarschule"]
+  },
+  {
+    "id": "primarschule",
+    "typ": "entscheidung",
+    "beschreibung": "Du gehst zur Primarschule.",
+    "bedingung": "Alter >= 6",
+    "mehrfach": false,
+    "effekte": {
+      "intelligenz": 2
+    },
+    "setFlags": {
+      "primarschule": true
+    },
+    "requireFlags": {
+      "kindergarten": true
+    },
+    "pos": [600, 200],
+    "verknuepfungen": []
+  }
+]
