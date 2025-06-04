@@ -1,0 +1,118 @@
+[
+  {
+    "id": "Start",
+    "typ": "zufall",
+    "beschreibung": "dein Leben startet",
+    "bedingung": "Alter >= 0",
+    "mehrfach": false,
+    "effekte": {},
+    "setFlags": {
+      "start": true
+    },
+    "requireFlags": {},
+    "pos": [
+      -512.0,
+      -174.0
+    ],
+    "verknuepfungen": [
+      "Zuhause ",
+      "Spielgruppe"
+    ]
+  },
+  {
+    "id": "Zuhause ",
+    "typ": "entscheidung",
+    "beschreibung": "du bleibst Zuhause",
+    "bedingung": "Alter >= 1 && Flags[\"Start\"] === true",
+    "mehrfach": false,
+    "effekte": {},
+    "setFlags": {
+      "Zuhause": true,
+      "Zuhause ": true
+    },
+    "requireFlags": {},
+    "pos": [
+      -351.0,
+      -297.5
+    ],
+    "verknuepfungen": [
+      "Kindergarten",
+      "Langeweile"
+    ]
+  },
+  {
+    "id": "Spielgruppe",
+    "typ": "entscheidung",
+    "beschreibung": "du gehst nun in die Spielgruppe",
+    "bedingung": "Alter >= 1 && Flags[\"Start\"] === true",
+    "mehrfach": false,
+    "effekte": {},
+    "setFlags": {
+      "Spielgruppe": true
+    },
+    "requireFlags": {},
+    "pos": [
+      -342.0,
+      -55.99385633270321
+    ],
+    "verknuepfungen": [
+      "Kindergarten",
+      "Freunde"
+    ]
+  },
+  {
+    "id": "Kindergarten",
+    "typ": "zufall",
+    "beschreibung": "du gehst nun in den Kindergarten",
+    "bedingung": "Alter >= 3 && Flags[\"Zuhause\"] === true && Flags[\"Spielgruppe\"] === true && Flags[\"Langeweile\"] === true && Flags[\"Freunde\"] === true",
+    "mehrfach": false,
+    "effekte": {},
+    "setFlags": {
+      "Kindergarten": true
+    },
+    "requireFlags": {},
+    "pos": [
+      30.0,
+      -135.625
+    ],
+    "verknuepfungen": []
+  },
+  {
+    "id": "Langeweile",
+    "typ": "zufall",
+    "beschreibung": "du langweillst dich zu tode.",
+    "bedingung": "Flags[\"Zuhause\"] === true",
+    "mehrfach": false,
+    "effekte": {},
+    "setFlags": {
+      "Langeweile": true
+    },
+    "requireFlags": {},
+    "pos": [
+      -190.0,
+      -288.5625
+    ],
+    "verknuepfungen": [
+      "Kindergarten"
+    ]
+  },
+  {
+    "id": "Freunde",
+    "typ": "zufall",
+    "beschreibung": "du findest neue Freunde",
+    "bedingung": "Flags[\"Spielgruppe\"] === true",
+    "mehrfach": false,
+    "effekte": {},
+    "setFlags": {
+      "Freunde": true
+    },
+    "requireFlags": {},
+    "pos": [
+      -178.0,
+      -49.456462665406434
+    ],
+    "verknuepfungen": [
+      "Kindergarten"
+    ]
+  }
+]

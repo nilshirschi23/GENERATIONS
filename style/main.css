@@ -1,0 +1,198 @@
+/* main.css */
+
+/* Gesamt-Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body, html {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background: #eef2f5;
+  color: #333;
+}
+#app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Starthintergrund */
+#start-screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url("../assets/img/Home.png") no-repeat center center;
+  background-size: cover;
+  padding: 20px;
+}
+#start-screen form {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+}
+#start-screen h1 {
+  margin-bottom: 20px;
+  color: #333;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+#start-screen form label {
+  display: block;
+  margin: 10px 0 5px;
+}
+#start-screen form input,
+#start-screen form select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+}
+#start-screen form button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  background: #007acc;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Spielscreen */
+#game-screen {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Horizontale Themen-Navigation */
+#topic-nav {
+  background: #f9f9f9;
+  border-bottom: 1px solid #ccc;
+}
+#topic-nav ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#topic-nav li button {
+  background: none;
+  border: none;
+  padding: 10px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+#topic-nav li button:hover {
+  background: #e0e0e0;
+}
+
+/* Subtopic-Panel */
+#subtopic-panel {
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+  padding: 8px;
+  display: none;
+}
+#subtopic-panel ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#subtopic-panel li {
+  margin: 4px 8px;
+}
+#subtopic-panel button {
+  background: #007acc;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+#subtopic-panel button:hover {
+  background: #005fa3;
+}
+
+/* Header */
+#game-header {
+  background: #f0f0f0;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Haupt-Container */
+.game-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 10px;
+  padding: 10px;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Panels */
+#character-panel,
+#decision-panel,
+#event-panel {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+/* Decision-Buttons */
+.choice-buttons button {
+  margin: 5px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  background: #007acc;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Footer / Optionen */
+#game-options {
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  text-align: center;
+  background: #f9f9f9;
+}
+#game-options button {
+  padding: 8px 16px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  background: #007acc;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Profilbild im Character-Panel */
+#profile-container {
+  text-align: center;
+  margin-bottom: 10px;
+}
+#profile-pic {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #007acc;
+}
