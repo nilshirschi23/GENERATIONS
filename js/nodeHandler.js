@@ -1,22 +1,17 @@
 import { gameState } from './gameState.js';
+import { gameState } from './gameState.js';
+import nodesData from '../data/nodes.json' assert { type: 'json' };
 
 let loadedNodes = [];
 
 export async function loadNodeTree() {
   if (loadedNodes.length > 0) return loadedNodes;
-  try {
-    const res = await fetch('../data/nodes.json');
-    if (!res.ok) throw new Error(`Fehler beim Laden: ${res.status}`);
-    loadedNodes = await res.json();
-    // IDs schon beim Laden trimmen
-    loadedNodes.forEach(node => {
-      if (typeof node.id === "string") node.id = node.id.trim();
-    });
-    return loadedNodes;
-  } catch (err) {
-    console.error("Konnte nodes.json nicht laden:", err);
-    return [];
-  }
+  loadedNodes = nodesData.map(n => {
+    const node = { ...n };
+    if (typeof node.id === 'string') node.id = node.id.trim();
+    return node;
+  });
+  return loadedNodes;
 }
 
 function isReachableByAnyConnection(node, allNodes) {
