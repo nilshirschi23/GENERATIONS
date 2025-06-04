@@ -1,25 +1,18 @@
 import { gameState } from './gameState.js';
 import { earnMoney, spendMoney } from './gameState.js';
+
 import { applyNodeEffects, loadNodeTree } from './nodeHandler.js';
+import countries from '../data/countries.json' assert { type: 'json' };
 
-let countries = [];
-
-async function populateCountryDropdown() {
-  try {
-    const response = await fetch('data/countries.json');
-    countries = await response.json();
-
-    const select = document.getElementById('country');
-    select.innerHTML = '';
-    countries.forEach(country => {
-      const option = document.createElement('option');
-      option.value = country.id;
-      option.textContent = country.name;
-      select.appendChild(option);
-    });
-  } catch (err) {
-    console.error("Fehler beim Laden der Länder:", err);
-  }
+function populateCountryDropdown() {
+  const select = document.getElementById('country');
+  select.innerHTML = '';
+  countries.forEach(country => {
+    const option = document.createElement('option');
+    option.value = country.id;
+    option.textContent = country.name;
+    select.appendChild(option);
+  });
 }
 
 function getProfileImagePath() {
